@@ -21,11 +21,19 @@
   <body>
     <nav class="teal lighten-3 z-depth-2">
   <div class="nav-wrapper">
-    <a href="#" class="brand-logo ">My blog</a>
+    <a href="/" class="brand-logo ">My blog</a>
+    <% if user_signed_in? %>
     <ul id="nav-mobile" class="right hide-on-med-and-down">
-      <li><a href="new_user_session_path" class="btn">ログイン</a></li>
-      <li><a href="new_user_registration_path" class="btn">新規登録</a></li>
-    </ul>
+      <%=link_to "マイページ",user_path,method: :get%>
+      <%=link_to "ログアウト",destroy_user_session_path,method: :deleate %>
+      <%=link_to "投稿",new_blog_path,method: :get %>
+
+    <%else%>  
+    <div id="nav-mobile" class="right hide-on-med-and-down">
+      <%=link_to "ログイン" ,new_user_session_path, class: "btn",method: :get %>
+      <%=link_to "新規登録" ,new_user_registration_path, class: "btn", method: :get %>
+    </div>
+   <% end %>
   </div>
 </nav>
     <%= yield %>

@@ -23,11 +23,11 @@
   <div class="nav-wrapper">
     <a href="/" class="brand-logo ">My blog</a>
     <% if user_signed_in? %>
-    <ul id="nav-mobile" class="right hide-on-med-and-down">
-      <%=link_to "マイページ",user_path,method: :get%>
-      <%=link_to "ログアウト",destroy_user_session_path,method: :deleate %>
-      <%=link_to "投稿",new_blog_path,method: :get %>
-
+    <div id="nav-mobile" class="right hide-on-med-and-down">
+      <%=link_to "マイページ",user_path(current_user.id),class: "btn",method: :get %>
+      <%=link_to "ログアウト",destroy_user_session_path, class: "btn",method: :delete %>
+      <%=link_to "投稿",new_blog_path, class: "btn",method: :get %>
+    </div>
     <%else%>  
     <div id="nav-mobile" class="right hide-on-med-and-down">
       <%=link_to "ログイン" ,new_user_session_path, class: "btn",method: :get %>
